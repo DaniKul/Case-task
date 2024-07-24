@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Кейс-задание</title>
+       </head>
+       <div class="content"></div>
+<table id="FirstTable" border="1" width="600" style="border-collapse:collapse;" align="center" bgcolor="#fcf4a9">
+    <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>E</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr contenteditable='true'>
+            <td>-</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-</td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td></td>
+            <td>-</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr contenteditable='true'>
+            <td>-</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr >
+            <th>A: <select id="select0">
+                <option>---</option>
+                <option>Критерий</option>
+                <option>Сумма</option>
+                <option>Макс.</option>
+                <option>Мин.</option>
+                <option>Конкат</option>
+            </select>
+            </th>
+            <th>B: <select id="select1">
+                <option>---</option>
+                <option>Критерий</option>
+                <option>Сумма</option>
+                <option>Макс.</option>
+                <option>Мин.</option>
+                <option>Конкат</option>
+            </select>
+            </th>
+            <th>C: <select id="select2">
+                <option>---</option>
+                <option>Критерий</option>
+                <option>Сумма</option>
+                <option>Макс.</option>
+                <option>Мин.</option>
+                <option>Конкат</option>
+            </select>
+            </th>
+            <th>D: <select id="select3">
+                <option>---</option>
+                <option>Критерий</option>
+                <option>Сумма</option>
+                <option>Макс.</option>
+                <option>Мин.</option>
+                <option>Конкат</option>
+            </select>
+            </th>
+            <th>E: <select id="select4">
+                <option>---</option>
+                <option>Критерий</option>
+                <option>Сумма</option>
+                <option>Макс.</option>
+                <option>Мин.</option>
+                <option>Конкат</option>
+            </select>
+            </th>
+        </tr>
+    </tfoot>
+</table>
+<button type="submit" class="btn btn-success" id="bt" value="Show Grouped Table" onclick="alert('В разработке')">Сгруппировать</button>
+<script>
+    var myTable = document.getElementById('FirstTable')
+     function GroupedTable() {      //https://www.encodedna.com/javascript/how-to-read-data-from-html-table-using-javascript.htm
+        document.getElementById('myTable').innerHTML = ""
+        var myTab = document.getElementById('FirstTable')
+        for (i = 1; i < myTab.rows.length; i++) {
+            var objCells = myTab.rows.item(i).cells
+            for (var j = 0; j < objCells.length; j++) {
+                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML
+            }
+            info.innerHTML = info.innerHTML + '<br />'
+        }
+    }
+    /*function GroupedTable(){
+var table = document.querySelector('#FirstTable') //https://www.youtube.com/watch?v=TdlNyWvbrdY создание двумерного массива
+var arr = [[1,2,3],[4,5,6],[7,8,9]]
+fillTable(table, arr)
+function fillTable(table, arr){
+    for (var i = 0; i <arr.length; i++) {
+        var tr = document.createElement('tr')
+        for (var j = 0; j <arr[i].length; j++){
+            var td = document.createElement('td')
+            td.innerHTML = arr[i][j]
+            tr.appendChild(td)
+        }
+        table.appendChild(tr)
+    }
+}
+    }
+    document.querySelector('.content').innerHTML ='<table class="Ungrouped"></table>'
+    for (key in FirstTable){
+        let row=document.createElement('tr')
+        row.innerHTML = '<td>${key}</td>'
+        document.querySelector('.Ungrouped').appendChild(row)
+    }
+</script>
+</html>
