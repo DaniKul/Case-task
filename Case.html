@@ -1,170 +1,551 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="utf-8">
-        <title>Кейс-задание</title>
-       </head>
-       <div class="content"></div>
-<table id="FirstTable" border="1" width="600" style="border-collapse:collapse;" align="center" bgcolor="#fcf4a9">
-    <thead>
-        <tr>
-            <th>A</th>
-            <th>B</th>
-            <th>C</th>
-            <th>D</th>
-            <th>E</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr contenteditable='true'>
-            <td>-</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td>-</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td></td>
-            <td>-</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>-</td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>-</td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>-</td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td></td>
-            <td>-</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td></td>
-            <td>-</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr contenteditable='true'>
-            <td>-</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr >
-            <th>A: <select id="select0">
-                <option>---</option>
-                <option>Критерий</option>
-                <option>Сумма</option>
-                <option>Макс.</option>
-                <option>Мин.</option>
-                <option>Конкат</option>
-            </select>
-            </th>
-            <th>B: <select id="select1">
-                <option>---</option>
-                <option>Критерий</option>
-                <option>Сумма</option>
-                <option>Макс.</option>
-                <option>Мин.</option>
-                <option>Конкат</option>
-            </select>
-            </th>
-            <th>C: <select id="select2">
-                <option>---</option>
-                <option>Критерий</option>
-                <option>Сумма</option>
-                <option>Макс.</option>
-                <option>Мин.</option>
-                <option>Конкат</option>
-            </select>
-            </th>
-            <th>D: <select id="select3">
-                <option>---</option>
-                <option>Критерий</option>
-                <option>Сумма</option>
-                <option>Макс.</option>
-                <option>Мин.</option>
-                <option>Конкат</option>
-            </select>
-            </th>
-            <th>E: <select id="select4">
-                <option>---</option>
-                <option>Критерий</option>
-                <option>Сумма</option>
-                <option>Макс.</option>
-                <option>Мин.</option>
-                <option>Конкат</option>
-            </select>
-            </th>
-        </tr>
-    </tfoot>
-</table>
-<button type="submit" class="btn btn-success" id="bt" value="Show Grouped Table" onclick="alert('В разработке')">Сгруппировать</button>
-<script>
-    var myTable = document.getElementById('FirstTable')
-     function GroupedTable() {      //https://www.encodedna.com/javascript/how-to-read-data-from-html-table-using-javascript.htm
-        document.getElementById('myTable').innerHTML = ""
-        var myTab = document.getElementById('FirstTable')
-        for (i = 1; i < myTab.rows.length; i++) {
-            var objCells = myTab.rows.item(i).cells
-            for (var j = 0; j < objCells.length; j++) {
-                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML
-            }
-            info.innerHTML = info.innerHTML + '<br />'
-        }
+<style>
+    table {
+        border: none;
+            width: 600px;
+        border-collapse: collapse;
+        position: relative;
+        left:600px;
     }
-    /*function GroupedTable(){
-var table = document.querySelector('#FirstTable') //https://www.youtube.com/watch?v=TdlNyWvbrdY создание двумерного массива
-var arr = [[1,2,3],[4,5,6],[7,8,9]]
-fillTable(table, arr)
-function fillTable(table, arr){
-    for (var i = 0; i <arr.length; i++) {
-        var tr = document.createElement('tr')
-        for (var j = 0; j <arr[i].length; j++){
-            var td = document.createElement('td')
-            td.innerHTML = arr[i][j]
-            tr.appendChild(td)
+
+    td {
+border: 1px solid black;
+text-align: center;
+overflow: hidden;
+width: 120px;
+background-color: rgb(252, 243, 121);
+word-wrap: break-word;
+max-width: 120px;
+    }
+    table.table2 {
+        border: none;
+            width: 600px;
+        border-collapse: collapse;
+        position: relative;
+        top: 40px;
+        left:600px;
+    }
+
+    td.td2 {
+border: 1px solid black;
+text-align: center;
+overflow: hidden;
+width: 120px;
+background-color: rgb(161, 161, 161);
+word-wrap: break-word;
+max-width: 120px;
+    }
+    table.table3 {
+        border: none;
+            width: 600px;
+        border-collapse: collapse;
+        background: transparent;
+        position: relative;
+        top: 50px;
+        left:600px;
+    }
+    td.td3 {
+    border: none;
+    text-align: center;
+    overflow: hidden;
+    width: 120px;
+    background: transparent;
+    word-wrap: break-word;
+    max-width: 120px;
+    }
+    th {
+        padding: 5px;
+        border: none;
+        text-align: left;
+    }
+    tfoot{
+        border: none;
+    }
+    button{
+        position: relative;
+        left:1092px;           
+    }
+    .unmove {
+            position: fixed;
+            left: 595px;
+            top: 31px;
         }
-        table.appendChild(tr)
+    .brace {
+        position:sticky;
+        float: left;
+        bottom: 0;
+        left: 0;
+    }
+
+</style>
+<head>
+    <meta charset="utf-8">
+    <title>Кейс-задание</title>
+    </head>
+    <div class="content"></div>
+<table id="FirstTable">
+<thead>
+    <tr id="Row0">
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>E</td>
+    </tr>
+</thead>
+<tbody>
+    <tr id="Row1" contenteditable='true'>
+        <td>-</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr id="Row2" contenteditable='true'>
+        <td></td>
+        <td>-</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr id="Row3" contenteditable='true'>
+        <td></td>
+        <td></td>
+        <td>-</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr id="Row4" contenteditable='true'>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr id="Row5" contenteditable='true'>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>-</td>
+    </tr>
+    <tr id="Row6" contenteditable='true'>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>-</td>
+        <td></td>
+    </tr>
+    <tr id="Row7" contenteditable='true'>
+        <td></td>
+        <td></td>
+        <td>-</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr id="Row8" contenteditable='true'>
+        <td></td>
+        <td>-</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr id="Row9" contenteditable='true'>
+        <td>-</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</tbody>
+<tfoot>
+    <tr>
+        <th>A: <select id="select0">
+            <option value="---">---</option>
+            <option value="Критерий">Критерий</option>
+            <option value="Сумма">Сумма</option>
+            <option value="Макс.">Макс.</option>
+            <option value="Мин.">Мин.</option>
+            <option value="Конкат">Конкат</option>
+        </select>
+        </th>
+        <th>B: <select id="select1">
+            <option value="---">---</option>
+            <option value="Критерий">Критерий</option>
+            <option value="Сумма">Сумма</option>
+            <option value="Макс.">Макс.</option>
+            <option value="Мин.">Мин.</option>
+            <option value="Конкат">Конкат</option>
+        </select>
+        </th>
+        <th>C: <select id="select2">
+            <option value="---">---</option>
+            <option value="Критерий">Критерий</option>
+            <option value="Сумма">Сумма</option>
+            <option value="Макс.">Макс.</option>
+            <option value="Мин.">Мин.</option>
+            <option value="Конкат">Конкат</option>
+        </select>
+        </th>
+        <th>D: <select id="select3">
+            <option value="---">---</option>
+            <option value="Критерий">Критерий</option>
+            <option value="Сумма">Сумма</option>
+            <option value="Макс.">Макс.</option>
+            <option value="Мин.">Мин.</option>
+            <option value="Конкат">Конкат</option>
+        </select>
+        </th>
+        <th>E: <select id="select4">
+            <option value="---">---</option>
+            <option value="Критерий">Критерий</option>
+            <option value="Сумма">Сумма</option>
+            <option value="Макс.">Макс.</option>
+            <option value="Мин.">Мин.</option>
+            <option value="Конкат">Конкат</option>
+        </select>
+        </th>
+    </tr>
+</tfoot>
+</table>
+
+<button type="submit" class="btn btn-success" id="bt" value="Show Grouped Table" onclick="createNewTable()">Сгруппировать</button>
+<div id="allBraces" class="unmove">  
+</div>
+<script>  
+var groupDataElementsExists = false //проверка на наличие кнопок сортировки и списка алгоритмов сортировки результирующей таблицы
+var TableExists = false //проверка наличия результирующей таблицы
+var totalRows //общее количество строк первой таблицы
+var totalCol //общее количество столбцов первой таблицы
+var nullRowException = false //флаг для проверки на пустую строку
+var tableData = [] //данные, введенные пользователем в виде двумерного массива (двумерный массив заполняется позже)
+var ResultArray = [] //данные, получаемые после группировки (и после сортировки) и вводимые в результирующую таблицу
+
+function createResultTable() //создание результирующей таблицы
+{
+/*https://www.geeksforgeeks.org/how-to-create-an-html-table-from-an-object-array-using-javascript/ - создание таблицы в javascript с использованием свойства innerHTML*/       
+let tableHTML = '<table id="SecondTable" class="table2"><tr>';
+        tableHTML += '</tr>';
+        ResultArray.forEach(item => {
+            tableHTML += '<tr>';
+            Object.values(item).forEach(value => {
+                tableHTML += `<td width="600" class="td2">${value}</td>`;
+            });
+            tableHTML += '</tr>';
+        });
+
+        tableHTML += '</table>';
+
+        document.body.innerHTML += tableHTML;
+        makeDataGroupElements()
+        TableExists = true
+}
+
+function makeDataGroupElements() //функция для создания кнопок сортировки и выбора алгоритмов сортировки
+{
+    groupDataElementsExists = true
+    //https://stackoverflow.com/questions/14643617/create-table-using-javascript
+const body = document.body,
+    tbl = document.createElement('table');
+
+tbl.id = "groupDataElementsTable"  
+tbl.setAttribute("class", "table3")
+for (let i = 0; i < 2; i++) {
+    const tr = tbl.insertRow();
+for (let j = 0; j < ResultArray[0].length; j++) {
+    const td = tr.insertCell();
+    td.setAttribute('class', 'td3')
+    if(i == 0){
+        let btn = document.createElement("button")
+        btn.id = ("Sort" + j)
+        btn.style.left = "0px"
+        btn.style.top = "0px"
+        btn.onclick = sortArray
+        btn.innerHTML = "Сортировать"
+        td.appendChild(btn)
+    }
+    if(i == 1 && j == 0){
+        //создание выпадающего списка. Создаём один раз.
+        let select = document.createElement("select");
+        ["Пузырьковый", "Перемешивание"].forEach((text, index) => {
+        var opt = new Option(text, "value" + index);
+        select.add(opt);
+        });
+        select.id = ("groupSelect")
+        td.setAttribute('class', 'td3')
+        td.innerHTML = "Алгоритм сортировки: "
+        td.appendChild(select);
     }
 }
+}
+body.appendChild(tbl);
+}
+
+function eraseTable() //функция удаления результирующей таблицы (чтобы не появлялась повторно)
+{
+    if(groupDataElementsExists){
+        document.getElementById('groupDataElementsTable').remove()
+        groupDataElementsExists = false
     }
-    document.querySelector('.content').innerHTML ='<table class="Ungrouped"></table>'
-    for (key in FirstTable){
-        let row=document.createElement('tr')
-        row.innerHTML = '<td>${key}</td>'
-        document.querySelector('.Ungrouped').appendChild(row)
+//Предотвращение повторного появления таблицы
+if (TableExists){
+document.getElementById("allBraces").innerHTML = "";
+SecondTable.remove()
+TableExists = false
+}
+}
+
+function collectTableData(){ //сбор данных с первой таблицы (редактируемой пользователем)
+var table = document.getElementById("FirstTable")
+totalRows = table.rows.length - 1
+totalCol = table.rows[0].cells.length
+
+//создание массива с заполнением его нулями
+for(let i = 0; i < totalRows; i++){
+tableData[i] = []
+for(let j = 0; j < totalCol; j++){
+    tableData[i][j] = 0
+}
+}
+//Наполнение массива элементами таблицы
+for (let x = 0; x < totalRows; x++)
+{
+for (let y = 0; y < totalCol; y++)
+{
+tableData[x][y] = table.rows[x].cells[y].innerHTML
+}
+}
+
+}
+
+function groupBraceCreate(rows) //создание скобочек слева от первой таблицы
+    {
+        let brace = document.createElement('img');
+        //brace.setAttribute("class","groupBrace");
+        brace.setAttribute('class','brace')
+        brace.setAttribute("id","groupBrace");
+        brace.setAttribute("src", "skobka.png");
+        brace.setAttribute("height", 21*(rows+1));
+        brace.setAttribute("width","10");
+        document.getElementById('allBraces').appendChild(brace);
+        document.getElementById('allBraces').appendChild(document.createElement('br'));
     }
+
+function bubbleSort(arr, n, m, chose) //https://www.geeksforgeeks.org/bubble-sort-algorithm/ пример сортировки пузырьком для одномерного массива
+{
+var temp
+var swapped
+for (let i = 1; i < n - 1; i++) 
+{
+    swapped = false;
+    for (let j = 1; j < n - i; j++) 
+    {
+        if (Number.parseFloat(arr[j][chose]) > Number.parseFloat(arr[j + 1][chose])) 
+        {
+            for(let f = 0; f < m; f++){
+                // замена строк местами
+                temp = arr[j][f];
+                arr[j][f] = arr[j + 1][f];
+                arr[j + 1][f] = temp;
+            }
+            swapped = true;
+        }
+    }
+    //выход из цикла, если два элемента не были обменены
+    if (swapped == false)
+    break;
+}
+}
+
+function ShakerSort(arr, n, m, chose) //https://www.geeksforgeeks.org/cocktail-sort/?ref=header_search пример сортировки перемешиванием для одномерного массива
+{
+    let swapped = true;
+    let start = 0;
+    let end = n;
+
+    while (swapped == true) {
+        swapped = false;
+        for (let i = start; i < end - 1; ++i) {
+            if (Number.parseFloat(arr[i][chose]) > Number.parseFloat(arr[i + 1][chose])) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+        swapped = false;
+        end = end - 1;
+        for (let i = end - 1; i >= start; i--) {
+            if (Number.parseFloat(arr[i][chose]) > Number.parseFloat(arr[i + 1][chose])) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        start = start + 1;
+    }
+}
+
+function sortArray() //вызов функции сортировки в зависимости от выбранного алгоритма
+{
+columnCount = parseInt(this.id.substring(this.id.length-1, this.id.length))
+let sortOption = document.getElementById("groupSelect")
+switch(sortOption.options[sortOption.selectedIndex].value){
+    case "value0": bubbleSort(ResultArray, ResultArray.length, ResultArray[0].length, columnCount)
+    break
+    case "value1": ShakerSort(ResultArray, ResultArray.length, ResultArray[0].length, columnCount)
+    break
+}
+eraseTable()
+createResultTable()
+}
+
+function createNewTable() { //функция создания новой таблицы
+eraseTable()
+tableData = []
+ResultArray = []
+nullRowException = false
+collectTableData()
+GroupData()
+if(nullRowException){
+createResultTable()
+}
+}
+
+
+function GroupData(){ //функция группировки
+var optionArr = [] //массив, в который будут записаны варианты группировки, выбранные пользователем
+for(let i = 0; i < 5; i++){
+let selectElement = document.getElementById('select' + i)
+optionArr.push(selectElement.options[selectElement.selectedIndex].value) //https://sky.pro/media/poluchenie-vybrannogo-znacheniya-iz-vypadayushhego-spiska-v-javascript/ получение значения из выпадающего списка
+}
+if(optionArr.includes("Критерий")){
+let CriteriaRow1 = ""
+let CriteriaRow2 = ""
+let ResultArrayX = 0
+let ResultArrayY = 0
+let compareFlag
+let columnCount = 0
+let optionArrCount = 0
+//Формирование заголовка результирующей таблицы
+ResultArray[ResultArrayX] = []
+while(true){
+    if(optionArr[optionArrCount] != "---"){
+        ResultArray[ResultArrayX][columnCount] = tableData[0][optionArrCount]
+        columnCount++
+    }
+    optionArrCount++
+    if(optionArrCount == totalCol) break
+}
+ResultArrayX++
+columnCount = 0
+optionArrCount = 0
+
+//Блок кода с группировкой
+for (let i = 1; i < tableData.length; i++){
+//запись значений с первой строки для сравнения "Критериев"
+nullRowException = false
+for(let j = 0; j < tableData[0].length; j++){
+    if(optionArr[j] != "---"){
+        CriteriaRow1 += (optionArr[j] == "Критерий") ? (tableData[i][j] != '<br>' && tableData[i][j] != null && tableData[i][j] != '') ? tableData[i][j] + "-" : "" : ""
+        if(!nullRowException)
+        nullRowException = (tableData[i][j] == null || tableData[i][j] == '<br>' || tableData[i][j] == '') ? false : true
+    }
+}
+if(nullRowException){ //если строка не пустая, то начинается группировка
+ResultArray[ResultArrayX] = []
+while(true){
+    if(optionArr[optionArrCount] != "---"){
+        ResultArray[ResultArrayX][columnCount] = tableData[i][optionArrCount]
+        columnCount++
+    }
+    optionArrCount++
+    if(optionArrCount == tableData[0].length) break
+}
+columnCount = 0
+optionArrCount = 0
+let rowsCount = 0
+
+for (let x = i+1 ; x < tableData.length; x++){ //запись значений со второй строки для сравнения "Критериев"
+for(let j = 0; j < tableData[0].length; j++){
+    CriteriaRow2 += (optionArr[j] == "Критерий") ? (tableData[x][j] != '<br>' && tableData[x][j] != null && tableData[x][j] != '') ? tableData[x][j] + "-" : "" : ""
+}
+compareFlag = (CriteriaRow1 == CriteriaRow2) ? true : false //флаг, отражающий равенство критериев двух строк
+    for (let y = 0; y < tableData[0].length; y++){ //программа проходит по столбцам первой таблицы и производит группировку по заданным значениям для формирования результирующей таблицы
+        switch(optionArr[y]){
+            case "---":
+            break
+            case "Критерий":
+            if(compareFlag){
+                ResultArray[ResultArrayX][ResultArrayY] = tableData[x][y]
+                ResultArrayY++
+            }
+            break
+            case "Сумма": 
+            if(compareFlag){
+            let ArSum1 = parseFloat (ResultArray[ResultArrayX][ResultArrayY])
+            let ArSum2 = parseFloat (tableData[x][y])
+            if(!isNaN(ArSum1) &  !isNaN(ArSum2)){
+                ResultArray[ResultArrayX][ResultArrayY] = ArSum1 + ArSum2
+            }
+            else{
+                ResultArray[ResultArrayX][ResultArrayY] = (!isNaN(ArSum1)) ? ArSum1 : 0
+                ResultArray[ResultArrayX][ResultArrayY] = (!isNaN(ArSum2)) ? ArSum2 : 0
+            }
+            ResultArrayY++
+            }
+            break
+            case "Макс.": 
+            if(compareFlag){
+            ResultArray[ResultArrayX][ResultArrayY] = (tableData[i][y]>tableData[x][y]) ? tableData[i][y] : tableData[x][y]
+            ResultArrayY++
+            }
+            break
+            case "Мин.":
+            if(compareFlag){ 
+            ResultArray[ResultArrayX][ResultArrayY] = (tableData[i][y]<tableData[x][y]) ? tableData[i][y] : tableData[x][y]
+            ResultArrayY++
+            }
+            break
+            case "Конкат": 
+            if(compareFlag){
+            ResultArray[ResultArrayX][ResultArrayY] = tableData[i][y]+tableData[x][y]
+            ResultArrayY++
+            }
+            break
+        }
+}
+if(compareFlag){ //"слияние" строк
+    tableData.splice(x,1)
+    rowsCount++
+    x--
+}  
+CriteriaRow2 = ''
+ResultArrayY = 0
+}
+groupBraceCreate(rowsCount)
+rowsCount = 0
+}
+if(nullRowException){ 
+ResultArrayX++ 
+}
+else{
+alert('В каждой строке таблицы должно быть хотя бы одно значение!')
+break
+}
+CriteriaRow1 = ''
+
+}
+
+
+}
+else{
+alert('Как минимум один столбец должен быть критерием!')
+}
+}
 </script>
 </html>
